@@ -1,7 +1,8 @@
 # **Brainfuck**  
 ### Brainfuck processor written in C++. Features support for randomness and JIT compilation  
 
-When running this software, a terminal will open. Enter the filepath to your Brainfuck file as well as the mode it should execute in after ` -`.  
+When running this software, a terminal will open.  
+Enter the filepath to your Brainfuck file as well as the mode it should execute in after ` -`.  
   
 `-c` will compile the file at your filepath into a `.bfbc` (stands for *BrainFuckByteCode*) file.  
 `-r` will try to run a `.bfbc` from the filepath you entered.  
