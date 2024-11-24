@@ -1,5 +1,6 @@
 # **Brainfuck**  
-### Brainfuck processor written in C++. Features support for randomness and JIT compilation  
+##### STILL IN DEVELOPMENT
+### Brainfuck processor written in C++. Features support for randomness and JIT compilation
 ##
 When running this, a terminal will open.  
 Enter the filepath to your brainfuck file (file extension doesn't matter).  
