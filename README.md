@@ -3,6 +3,8 @@
 ##
 When running this, a terminal will open.  
 Enter the filepath to your brainfuck file (file extension doesn't matter).  
+###### Note that the file path is read until ` -` is reached.
+###### If your file path includes these two characters it will cause issues.
 Optionally, you can change the code execution mode:  
 
 `-i` will just interpret the code (default, will be used if no mode is specified).  
