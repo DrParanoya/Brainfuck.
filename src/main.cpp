@@ -18,7 +18,6 @@ int main()
                 break;
             }
             else if ((input[i] == ' ' && input[i + 1] == '-')) {
-                if (input[i] != ' ' && input[i + 1] != '-') {
                     if (input[i + 2] == '?') {
                         random == true;
                     }
@@ -28,20 +27,12 @@ int main()
                     else {
                         std::cout << "Expected an identifier!\n";
                     }
-                }
                 break;
             }
             path = path + static_cast<char>(input[i]);
             ++i;
-            
         }
-        
-        
-
-        std::cout << path << "\n";
-        
         ++i;
-        //if (input[i+1]=='-' && input[i + 2] == 2){}
 
         std::ifstream file(path);
      
