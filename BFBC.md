@@ -8,24 +8,24 @@ Features 7 different instructions:
 - lpe
 ##
 ### chg
-`chg` **ch**an**g**es the current cell by x.  
+`chg` changes the current cell by x.  
 > ### Example:
 > chg -13  
 > Decreases the cell value by 13.
 > ##
 ### mov
-`mov` **mov**es the pointer y steps.
+`mov` moves the pointer y steps.
 > ### Example:
 > mov 4  
 > Moves the pointer 4 steps.
 ##
 ### out
-`out` **out**puts the ASCII character with the value of the current cell to the terminal.
+`out` outputs the ASCII character with the value of the current cell to the terminal.
 > ### Example (Value of the current cell is 41.):
 > Outputs the character ) to the terminal.
 ##
 ### inp
-`inp` awaits and reads 1 character of user **inp**ut and stores its ASCII value in the current cell.
+`inp` awaits and reads 1 character of user input and stores its ASCII value in the current cell.
 ##
 ### lps
 `lps` defines the start of a loop. If no mathing `lpe` instrution is found, it will throw an error.
