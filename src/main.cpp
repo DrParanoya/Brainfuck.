@@ -42,5 +42,6 @@ int main()
         else {
             while (getline(file, bfcode)) {}
         }
+        file.close
     }
 }
