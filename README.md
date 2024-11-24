@@ -1,5 +1,5 @@
 # **Brainfuck**  
-##### STILL IN DEVELOPMENT
+##### STILL IN DEVELOPMENT ([Roadmap](https://github.com/DrParanoya/Brainfuck/blob/main/ROADMAP.md))
 ### Brainfuck processor written in C++. Features support for randomness and JIT compilation
 ##
 When running this, a terminal will open.  
