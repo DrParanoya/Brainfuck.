@@ -30,6 +30,7 @@ Features 8 different instructions:
 ##
 ### rng
 `rng` changes the current cell value to a random number.
+##
 ### lps
 `lps` defines the start of a loop. If no mathing `lpe` instrution is found, it will throw an error.
   
