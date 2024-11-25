@@ -21,7 +21,7 @@ You also need to add the ` -?` flag behind the mode flag (off by default).
 ### Examples:  
 > ##
 > `C:\Users\User\Desktop\Brainfile.txt -e -?`  
-> This will compile `Brainfile.txt` into `Brainfile.bfbc` with support for randomness and run it.
+> This will compile `Brainfile.txt` into `Brainfile.txt.bfbc` with support for randomness and run it.
 > ##
 > `C:\Users\User\Desktop\HelloBf.bfbc -r`  
 > This will execute the BrainFuckByteCode inside the `HelloBf.bfbc` file without support for randomness.
