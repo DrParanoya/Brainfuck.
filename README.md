@@ -1,6 +1,6 @@
 # **Brainfuck**  
 ##### STILL IN DEVELOPMENT ([Roadmap](https://github.com/DrParanoya/Brainfuck/blob/main/ROADMAP.md))
-### Brainfuck processor written in C++. Features support for randomness and JIT compilation.
+### Brainfuck processor written in C++. Features support for randomness, JIT compilation and AOT compilation.
 ### This implementation has 65 536 memory cells (uint16_t limit).
 ##
 When running this, a terminal will open.  
