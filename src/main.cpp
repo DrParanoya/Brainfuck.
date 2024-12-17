@@ -22,7 +22,7 @@ int main() {
                 if (input[i + 2] == '?') {
                     random == true;
                 }
-                else if (input[i + 2] == 'i' || input[i + 2] == 'e' || input[i + 2] == 'c' || input[i + 2] == 'r' || input[i + 2] == 'n' || input[i + 2] == 's') {
+                else if (input[i + 2] == 'i' || input[i + 2] == 'e' || input[i + 2] == 'c' || input[i + 2] == 'r' || input[i + 2] == 'a' || input[i + 2] == 's') {
                     mode = input[i + 2];
                 }
                 else {
@@ -48,6 +48,7 @@ int main() {
             switch (mode) {
             case 'i':
                 interpreter(bfcode, random);
+                break;
             case 'n':
                 aheadOfTime(bfcode, path + ".cpp", random);
                 break;
