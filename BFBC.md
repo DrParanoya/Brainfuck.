@@ -5,8 +5,8 @@ Features 8 different instructions:
 - out
 - inp
 - rng
-- lps
-- lpe
+- slp
+- elp
 ##
 ### chg
 `chg` changes the current cell by x.  
@@ -31,28 +31,22 @@ Features 8 different instructions:
 ### rng
 `rng` changes the current cell value to a random number.
 ##
-### lps
-`lps` defines the start of a loop. If no mathing `lpe` instrution is found, it will throw an error.
+### slp
+`slp` defines the start of a loop. If no mathing `lpe` instrution is found, it will throw an error.
   
-### lpe
-`lpe` defines the end of a loop. If no matching `lps` instruction is found, it will throw an error.
+### elp
+`elp` defines the end of a loop. If no matching `lps` instruction is found, it will throw an error.
 ##
 > ### Example program ( **,[-.]>+++++.<<<<<<<<<<<<<<<?** ):
 > ```
-> inp
-> lps
-> chg+1
-> out
-> lpe
-> mov 1
-> chg-5
-> out
+> inp     awaits, reads and stores user input
+> slp     starts a loop
+> chg-1   adds 1 to the current cells value
+> out     ouputs the current cells value as ASCII character
+> elp     ends the loop
+> mov+1   moves the pointer 1 cell forward
+> chg+5   subtracts 5 from the current cells value
+> out     outputs the current cells value as ASCII character
+> mov-15  moves the pointer 15 cells back
+> rng     if randomness is disabled, the ? will be ignored, and this instruction will vanish
 > ```
-> This program will first await user input and store it in the current cell (cell 0).  
-> Then in will enter a loop.
-> This loop will decrease the current cell by 1 and then output it until the cell reaches a value of 0.  
-> The value the current cell will eventually overflow.
-> The loop will then be exited.  
-> After the loop, the pointer is moved one step (to cell 1).  
-> The cell value will be increased by 5.
-> Lastly, it will output the ASCII character `{`.
