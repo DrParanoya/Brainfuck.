@@ -5,8 +5,8 @@
 
 bool byteGenerator(const std::string bfcode, std::string path, const bool random) {
 	std::ofstream file(path);
-	std::uint64_t change = 0;
-	std::uint64_t move = 0;
+	std::int64_t change = 0;
+	std::int64_t move = 0;
 	if (random) {
 		for (std::uint64_t i = 0; i <= bfcode.length(); i++) {
 			switch (bfcode[i]) {
