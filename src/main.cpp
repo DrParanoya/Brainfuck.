@@ -49,7 +49,7 @@ int main() {
             case 'i':
                 interpreter(bfcode, random);
                 break;
-            case 'n':
+            case 'a':
                 aheadOfTime(bfcode, path + ".cpp", random);
                 break;
             case 'e':
