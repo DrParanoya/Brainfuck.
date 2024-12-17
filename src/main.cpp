@@ -44,7 +44,7 @@ int main() {
             while (getline(file, bfcode)) {}
         }
         file.close();
-        if (loopsCorrect) {
+        if (loopsCorrect(bfcode)) {
             switch (mode) {
             case 'i':
                 interpreter(bfcode, random);
