@@ -2,9 +2,10 @@
 #include <fstream>
 #include <string>
 #include <cstdint>
+#include "BFHeader.h"
 
-int main()
-{
+int main() {
+    
     while (true) {
         std::string input;
         std::string path;
@@ -18,15 +19,15 @@ int main()
                 break;
             }
             else if ((input[i] == ' ' && input[i + 1] == '-')) {
-                    if (input[i + 2] == '?') {
-                        random == true;
-                    }
-                    else if (input[i + 2] == 'i' || input[i + 2] == 'e' || input[i + 2] == 'c' || input[i + 2] == 'r' || input[i + 2] == 'n') {
-                        mode = input[i + 2];
-                    }
-                    else {
-                        std::cout << "Expected an identifier!\n";
-                    }
+                if (input[i + 2] == '?') {
+                    random == true;
+                }
+                else if (input[i + 2] == 'i' || input[i + 2] == 'e' || input[i + 2] == 'c' || input[i + 2] == 'r' || input[i + 2] == 'n' || input[i + 2] == 's') {
+                    mode = input[i + 2];
+                }
+                else {
+                    std::cout << "Expected an identifier!\n";
+                }
                 break;
             }
             path = path + static_cast<char>(input[i]);
@@ -35,13 +36,34 @@ int main()
         ++i;
 
         std::ifstream file(path);
-     
+
         if (file.fail()) {
-            std::cout << "ERROR: failed to open the file at the given path \"" << path << "\"!\n";
+            std::cout << "ERROR: failed to open a file at the given path \"" << path << "\"!\n";
         }
         else {
             while (getline(file, bfcode)) {}
         }
         file.close();
+        if (loopsCorrect) {
+            switch (mode) {
+            case 'i':
+                interpreter(bfcode, random);
+            case 'n':
+                aheadOfTime(bfcode, path + ".cpp", random);
+                break;
+            case 'e':
+                if (byteGenerator(bfcode, path + ".bfbc", random)) {
+                    byteInterpreter(path);
+                }
+                break;
+            case 'c':
+                byteGenerator(bfcode, path + ".bfbc", random);
+                break;
+            case 'r':
+                byteInterpreter(path);
+                break;
+            }
+        }
+
     }
 }
