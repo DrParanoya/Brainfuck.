@@ -14,7 +14,8 @@ Optionally, you can change the code execution mode:
 `-c` will compile the code into a `.bfbc` (stands for [*BrainFuckByteCode*](https://github.com/DrParanoya/Brainfuck/blob/main/BFBC.md)) file.  
 `-r` will try to run a `.bfbc` from the filepath you entered.  
 `-a` will turn your brainfuck code into C++ code and store it in a `.cpp` file.  
-`-s` will perform a check if all brainfuck loops open and close correctly. Runs automatically with `-e`, `-c` and `-n`.
+`-s` will perform a check if all brainfuck loops open and close correctly. Runs automatically with `-e`, `-c` and `-a` to prevent errors.
+
 ###### *Please note that you still need to compile the generated `.cpp` file!*
 ##
 To use randomness, place the `?` character into your code. It will set te current cell to a random vaule.  
