@@ -39,4 +39,4 @@ If possible, add the steps to reproduce it.
 To contribute, just open a pull request.  
 ###### *Do not ask questions about how brainfuck works!*  
 ##  
-###### This project is licensed under the GNU General Public License v3.0.
+###### This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 3
