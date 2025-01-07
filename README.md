@@ -34,7 +34,7 @@ You also need to add the ` -?` flag behind the mode flag (off by default).
 > ##  
 ### Bugs / Contributing:
 If you encounter any bugs feel free to open an issue. Please describe it as accurately as possible.  
-If possible, also add the steps to reproduce it.  
+If possible, add the steps to reproduce it.  
 To contribute, just open a pull request.  
 ###### *Do not ask questions about how brainfuck works!*  
 ##  
