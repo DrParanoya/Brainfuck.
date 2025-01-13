@@ -1,5 +1,5 @@
 ![**Brainfuck**](Brainfuck.png?raw=true "Brainfuck")
-# **Brainfuck**
+# **Brainfuck.**
 ##### STILL IN DEVELOPMENT ([Roadmap](https://github.com/DrParanoya/Brainfuck/blob/main/ROADMAP.md))
 ### Brainfuck processor written in C++. Features support for randomness, JIT compilation and AOT compilation.
 ### This implementation has 65 536 memory cells (uint16_t limit).
