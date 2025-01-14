@@ -6,4 +6,10 @@
 - Interpreter for [BrainFuckByteCode](https://github.com/DrParanoya/Brainfuck/blob/main/BFBC.md)
 - ~~Brainfuck to C++ compiler~~ DONE
 - ~~Logo~~ DONE
-- Actually committing the changes
+- Actually committing the changes  
+
+# Ideas for the future:
+- Using getopt instead of a regex search to parse the flags
+- Adding more languages for AOT (assembly, python, javascript, java)
+- Code cleanup/improvements/rewrites as I get better with C++
+Feel free to give me your ideas by opening issues!
