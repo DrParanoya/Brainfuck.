@@ -12,4 +12,6 @@
 - Using getopt instead of a regex search to parse the flags
 - Adding more languages for AOT (assembly, python, javascript, java)
 - Code cleanup/improvements/rewrites as I get better with C++
+- Changeable amount of memory cells
+  
 Feel free to give me your ideas by opening issues!
