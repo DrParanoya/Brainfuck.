@@ -13,5 +13,6 @@
 - Adding more languages for AOT (assembly, python, javascript, java)
 - Code cleanup/improvements/rewrites as I get better with C++
 - Changeable amount of memory cells
+- Calling it from the command line directly
   
 Feel free to give me your ideas by opening issues!
