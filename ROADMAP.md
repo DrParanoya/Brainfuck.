@@ -10,7 +10,7 @@
 
 # Ideas for the future:
 - Using getopt instead of a regex search to parse the flags
-- Adding more languages for AOT (assembly, python, javascript, java)
+- Adding more languages for AOT (x86 Assembly, Python, JavaScript, Java, WebAssembly)
 - Code cleanup/improvements/rewrites as I get better with C++
 - Changeable amount of memory cells
 - Calling it from the command line directly
