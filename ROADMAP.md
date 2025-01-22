@@ -6,7 +6,8 @@
 - Interpreter for [BrainFuckByteCode](https://github.com/DrParanoya/Brainfuck/blob/main/BFBC.md)
 - ~~Brainfuck to C++ compiler~~ DONE
 - ~~Logo~~ DONE
-- Actually committing the changes  
+- Actually committing the changes
+- Support for using it through the command line
 
 # Ideas for the future:
 - Using getopt instead of a regex search to parse the flags
