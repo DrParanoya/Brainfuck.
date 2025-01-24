@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "BFHeader.h"
 
-void interpreter(const std::string bfcode, const bool random, bool clear) {
+void interpreter(const std::string bfcode, const bool random, const bool clear) {
 	std::string loopCode; 
 	std::int64_t change = 0;
 	static std::uint16_t pointer = 0;
