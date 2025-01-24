@@ -2,17 +2,17 @@
 #include <fstream>
 #include "BFHeader.h"
 
-void aheadOfTime(std::string bfcode, std::string path, bool random) {
-	path += ".cpp";
+void aheadOfTime(const std::string bfcode, const std::string path, const bool random) {
+	std::int64_t change = 0;
 	std::ofstream file(path);
 	if (file.fail()) {
-		std::cout << "ERROR: failed to create a file at the given path \"" << path << "\"!\n";
+		std::cout << "ERROR: failed to create a file at \"" << path << "\"!\n";
 		return;
 	}
 	else {
 		file
 			<< "#include <iostream>\n"
-			<< "#include <vector>\n";
+			<< "#include <array>\n";
 		if (random) {
 			file << "#include <random>\n";
 		}
@@ -22,48 +22,61 @@ void aheadOfTime(std::string bfcode, std::string path, bool random) {
 			file
 				<< "std::random_device seed;\n"
 				<< "auto gen = std::mt19937{ seed() };\n"
-				<< "auto dist = std::uniform_int_distribution<std::uint16_t>{ 0, 255 };\n";
+				<< "auto dist = std::uniform_int_distribution<std::uint16_t>{ 0, 127 };\n";
 		}
 		file
-			<< "static auto cells = std::vector<char>(65536, 0);\n"
-			<< "std::uint16_t pointer = 0;";
+			<< "static std::array<uint8_t, 65536> cells{};\n"
+			<< "std::uint16_t pointer = 0;\n";
 
-		for (std::uint32_t i = 0; i <= bfcode.length(); i++) {
+		for (std::uint32_t i = 0; i < bfcode.length(); i++) {
 			switch (bfcode[i]) {
 			case '+':
-				file << "++cells[pointer];\n";
-				break;
 			case '-':
-				file << "--cells[pointer];\n";
+				while (bfcode[i] == '+' || bfcode[i] == '-') {
+					change = bfcode[i] == '+' ? change + 1 : change - 1;
+					i = i < bfcode.length() ? i + 1 : i;
+				}
+				--i;
+				file << "cells[pointer] += " << change << ";\n";
+				change = 0;
 				break;
 			case '>':
-				file << "++pointer;\n";
-				break;
 			case '<':
-				file << "--pointer;\n";
+				while (bfcode[i] == '>' || bfcode[i] == '<') {
+					change = bfcode[i] == '>' ? change + 1 : change - 1;
+					i = i < bfcode.length() ? i + 1 : i;
+				}
+				--i;
+				file << "pointer += " << change << ";\n";
+				change = 0;
 				break;
 			case '.':
-				file << "std::cout << static_cast<char>(cells[pointer]);\n";
+				file << "std::cout << static_cast<char>(cells[pointer] & 127);\n";
 				break;
 			case ',':
-				file << "std::cin >> cells[pointer];\n";
+				while (bfcode[i] == ',' && i < bfcode.length()) {
+					++i;
+				}
+				file << "cells[pointer] = std::getchar();\n";
 				break;
 			case '[':
-				file << "while (cells[pointer] != 0) {\n";
+				file << "while (cells[pointer] % 128 != 0) {\n";
 				break;
 			case ']':
 				file << "}\n";
 				break;
 			case '?':
 				if (random) {
+					while (bfcode[i] == '?' && i < bfcode.length()) {
+						++i;
+					}
 					file << "cells[pointer] = dist(gen);\n";
 				}
 				break;
 			}
 		}
-
 		file
-			<< "    return 0;\n"
+			<< "return 0;\n"
 			<< "}";
 	}
 	file.close();
