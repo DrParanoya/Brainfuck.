@@ -1,8 +1,9 @@
 ![**Brainfuck**](Brainfuck.png?raw=true "Brainfuck")
 # **Brainfuck.**
-##### STILL IN DEVELOPMENT ([Roadmap](https://github.com/DrParanoya/Brainfuck/blob/main/ROADMAP.md))
 ### Brainfuck processor written in C++. Features support for randomness, JIT compilation and AOT compilation.
 ### This implementation has 65 536 memory cells (uint16_t limit).
+##### Future plans: ([Roadmap](https://github.com/DrParanoya/Brainfuck/blob/main/ROADMAP.md))
+##### Version 1.0.0
 ##
 When running this, a terminal will open.  
 Enter the filepath to your brainfuck file (file extension doesn't matter).  
@@ -14,12 +15,11 @@ The following flags are allowed:
 `-c` will compile the code into a `.bfbc` (stands for [*BrainFuckByteCode*](https://github.com/DrParanoya/Brainfuck/blob/main/BFBC.md)) file.  
 `-r` will try to run a `.bfbc` from the filepath you entered.  
 `-a` will turn your brainfuck code into C++ code and store it in a `.cpp` file.  
-`-l` will perform a check if all brainfuck loops open and close correctly. Runs automatically with `-e`, `-c` and `-a` to prevent errors.  
+`-l` will perform a check if all brainfuck loops open and close correctly. Gets executed by default to prevent errors.
   
 `-?` will enable randomnes (every `?` inside your brainfuck code will randomize the value of the current cell).  
-`-!` will ignore incorrect loops (turn this on if you want to try out what non-text files do)  
 
-Important: `-!` and `-?`  should only be placed after the mode flag!
+Important: `-?`  should only be placed after the mode flag!
  
 ##
 ### Examples:  
