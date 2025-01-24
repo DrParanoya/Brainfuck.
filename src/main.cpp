@@ -1,70 +1,98 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <cstdint>
+#include <fstream>
+#include <iostream>
+#include <regex>
+#include <string>
 #include "BFHeader.h"
 
 int main() {
-    
+    std::string input;
+    std::smatch match;
+
+    std::string tmp;
+    std::string bfcode;
+    char mode = 'i';
+    bool random = false;
+
+    const static std::regex flagsr(" -[iecral] -?");
+    const static std::regex flags(" -[iecral]");
+
     while (true) {
-        std::string input;
-        std::string path;
-        std::string bfcode;
-        std::uint16_t i = 0;
-        char mode = 'i';
-        bool random = false;
         std::getline(std::cin, input);
-        while (true) {
-            if (input.length() == i) {
-                break;
-            }
-            else if ((input[i] == ' ' && input[i + 1] == '-')) {
-                if (input[i + 2] == '?') {
-                    random == true;
-                }
-                else if (input[i + 2] == 'i' || input[i + 2] == 'e' || input[i + 2] == 'c' || input[i + 2] == 'r' || input[i + 2] == 'a' || input[i + 2] == 's') {
-                    mode = input[i + 2];
-                }
-                else {
-                    std::cout << "Expected an identifier!\n";
-                }
-                break;
-            }
-            path = path + static_cast<char>(input[i]);
-            ++i;
+
+        if (std::regex_search(input, match, flagsr)) {
+            mode = input[match.position() + 2];
+            input.erase(match.position(), 6);
+            random = true;
         }
-        ++i;
+        else if (std::regex_search(input, match, flags)) {
+            mode = input[match.position() + 2];
+            input.erase(match.position(), 3);
+        }
 
-        std::ifstream file(path);
+        if (input[0] == '\"' && input[input.length() - 1] == '\"') {
+            input.erase(0, 1);
+            input.erase(input.length() - 1, 1);
+        }
 
+        if (input == "exit") {
+            return 0;
+        }
+        else if (input == "help") {
+            // print help
+            continue;
+        }
+
+        std::ifstream file(input);
         if (file.fail()) {
-            std::cout << "ERROR: failed to open a file at the given path \"" << path << "\"!\n";
+            std::cout << "ERROR: invalid file path/command \"" << input << "\"!\n";
+            file.close();
+            continue;
         }
         else {
-            while (getline(file, bfcode)) {}
-        }
-        file.close();
-        if (loopsCorrect(bfcode)) {
-            switch (mode) {
-            case 'i':
-                interpreter(bfcode, random);
-                break;
-            case 'a':
-                aheadOfTime(bfcode, path + ".cpp", random);
-                break;
-            case 'e':
-                if (byteGenerator(bfcode, path + ".bfbc", random)) {
-                    byteInterpreter(path);
-                }
-                break;
-            case 'c':
-                byteGenerator(bfcode, path + ".bfbc", random);
-                break;
-            case 'r':
-                byteInterpreter(path);
-                break;
+            
+            while (getline(file, tmp)) {
+                bfcode += tmp;
             }
         }
+        file.close();
 
+        switch (mode) {
+        case 'i':
+            if (loopsCorrect(bfcode)) {
+                interpreter(bfcode, random, true);
+            }
+            break;
+        case 'a':
+            if (loopsCorrect(bfcode)) {
+                aheadOfTime(bfcode, input + ".cpp", random);
+            }
+            break;
+        case 'e':
+            if (loopsCorrect(bfcode)) {
+                if (byteGenerator(bfcode, input += ".bfbc", random)) {
+                    byteInterpreter(input, true);
+                }
+            }
+            break;
+        case 'c':
+            if (loopsCorrect(bfcode)) {
+                byteGenerator(bfcode, input + ".bfbc", random);
+            }
+            break;
+        case 'r':
+            byteInterpreter(input, true);
+            break;
+        case 'l':
+            if (loopsCorrect(bfcode)) {
+                std::cout << "Loops inside the file " << input << " are correct.\n";
+            }
+            break;
+        }
+
+        mode = 'i';
+        random = false;
+        tmp.clear();
+        bfcode.clear();
     }
 }
