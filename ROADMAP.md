@@ -9,6 +9,7 @@
 - ~~Actually committing the changes~~ DONE
 - `-!` (ignores incorrect loops)
 - Support for using it through the command line
+- No recursion!
 
 # Ideas for the future:
 - Using getopt instead of a regex search to parse the flags
