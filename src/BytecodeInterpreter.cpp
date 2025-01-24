@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include "BFHeader.h"
 
-void byteInterpreter(std::string path, bool clear) {
+void byteInterpreter(std::string path, const bool clear) {
 	std::string loopCode;
 	std::string btcode;
 	static std::uint16_t pointer = 0;
