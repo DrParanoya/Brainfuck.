@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <regex>
+#include <chrono>
 #include <string>
 #include "BFHeader.h"
 
@@ -18,6 +19,7 @@ int main() {
     const static std::regex flags(" -[iecral]");
 
     while (true) {
+        std::cin.sync();
         std::getline(std::cin, input);
 
         if (std::regex_search(input, match, flagsr)) {
@@ -60,34 +62,56 @@ int main() {
         switch (mode) {
         case 'i':
             if (loopsCorrect(bfcode)) {
+                auto started = std::chrono::high_resolution_clock::now();
                 interpreter(bfcode, random, true);
+                auto done = std::chrono::high_resolution_clock::now();
+                std::cout << '\n' << std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count() << '\n';
             }
             break;
         case 'a':
             if (loopsCorrect(bfcode)) {
-                aheadOfTime(bfcode, input + ".cpp", random);
+                auto started = std::chrono::high_resolution_clock::now();
+                aheadOfTime(bfcode, input += ".cpp", random);
+                auto done = std::chrono::high_resolution_clock::now();
+                std::cout << '\n' << std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count() << '\n';
             }
             break;
         case 'e':
             if (loopsCorrect(bfcode)) {
                 if (byteGenerator(bfcode, input += ".bfbc", random)) {
+                    auto started = std::chrono::high_resolution_clock::now();
                     byteInterpreter(input, true);
+                    auto done = std::chrono::high_resolution_clock::now();
+                    std::cout << '\n' << std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count() << '\n';
                 }
             }
             break;
         case 'c':
             if (loopsCorrect(bfcode)) {
-                byteGenerator(bfcode, input + ".bfbc", random);
+                auto started = std::chrono::high_resolution_clock::now();
+                byteGenerator(bfcode, input += ".bfbc", random);
+                auto done = std::chrono::high_resolution_clock::now();
+                std::cout << '\n' << std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count() << '\n';
             }
             break;
         case 'r':
+        {
+            auto started = std::chrono::high_resolution_clock::now();
             byteInterpreter(input, true);
+            auto done = std::chrono::high_resolution_clock::now();
+            std::cout << '\n' << std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count() << '\n';
             break;
+        }
         case 'l':
-            if (loopsCorrect(bfcode)) {
-                std::cout << "Loops inside the file " << input << " are correct.\n";
+        {
+                auto started = std::chrono::high_resolution_clock::now();
+                if (loopsCorrect(bfcode)) {
+                    std::cout << "Loops inside the file " << input << " are correct.\n";
+                }
+                auto done = std::chrono::high_resolution_clock::now();
+                std::cout << '\n' << std::chrono::duration_cast<std::chrono::milliseconds>(done - started).count() << '\n';
+                break;
             }
-            break;
         }
 
         mode = 'i';

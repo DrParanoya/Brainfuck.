@@ -3,7 +3,7 @@
 #include <string>
 #include "BFHeader.h"
 
-bool byteGenerator(const std::string bfcode, std::string path, const bool random) {
+bool byteGenerator(std::string &bfcode, std::string &path, const bool random) {
 	std::ofstream file(path);
 	if (file.fail()) {
 		std::cout << "ERROR: failed to create a file at \"" << path << "\"!\n";
@@ -34,7 +34,7 @@ bool byteGenerator(const std::string bfcode, std::string path, const bool random
 				i = i < bfcode.length() ? i + 1 : i;
 			}
 			--i;
-			file << "chg" << (change < 0 ? "-" + std::to_string((change * -1) % 127) : "+" + std::to_string(change % 127));
+			file << "chg" << (change < 0 ? "-" + std::to_string((change * -1) % 255) : "+" + std::to_string(change % 255));
 			change = 0;
 			break;
 		case '>':

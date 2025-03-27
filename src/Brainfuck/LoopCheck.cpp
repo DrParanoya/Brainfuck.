@@ -1,7 +1,7 @@
 #include <iostream>
 #include "BFHeader.h"
 
-bool loopsCorrect(const std::string bfcode) {
+bool loopsCorrect(std::string &bfcode) {
 	std::uint64_t open = 0;
 	std::uint64_t closed = 0;
 	for (std::uint32_t i = 0; i < bfcode.length(); i++) {

@@ -2,7 +2,7 @@
 #include <fstream>
 #include "BFHeader.h"
 
-void aheadOfTime(const std::string bfcode, const std::string path, const bool random) {
+void aheadOfTime(std::string &bfcode, std::string &path, const bool random) {
 	std::int64_t change = 0;
 	std::ofstream file(path);
 	if (file.fail()) {
@@ -22,7 +22,7 @@ void aheadOfTime(const std::string bfcode, const std::string path, const bool ra
 			file
 				<< "std::random_device seed;\n"
 				<< "auto gen = std::mt19937{ seed() };\n"
-				<< "auto dist = std::uniform_int_distribution<std::uint16_t>{ 0, 127 };\n";
+				<< "auto dist = std::uniform_int_distribution<std::uint16_t>{ 0, 255 };\n";
 		}
 		file
 			<< "static std::array<uint8_t, 65536> cells{};\n"
@@ -51,7 +51,7 @@ void aheadOfTime(const std::string bfcode, const std::string path, const bool ra
 				change = 0;
 				break;
 			case '.':
-				file << "std::cout << static_cast<char>(cells[pointer] & 127);\n";
+				file << "std::cout << static_cast<char>(cells[pointer]);\n";
 				break;
 			case ',':
 				while (bfcode[i] == ',' && i < bfcode.length()) {
@@ -60,7 +60,7 @@ void aheadOfTime(const std::string bfcode, const std::string path, const bool ra
 				file << "cells[pointer] = std::getchar();\n";
 				break;
 			case '[':
-				file << "while (cells[pointer] % 128 != 0) {\n";
+				file << "while (cells[pointer] != 0) {\n";
 				break;
 			case ']':
 				file << "}\n";
