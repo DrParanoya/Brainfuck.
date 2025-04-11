@@ -3,7 +3,7 @@
 ### Brainfuck interpreter/optimizing transpiler written in C++.
 ### This implementation has 65 536 memory cells (uint16_t limit).
 ##### Future plans: ([Roadmap](https://github.com/DrParanoya/Brainfuck/blob/main/ROADMAP.md))
-##### Version 1.0.1
+##### Version 1.1.0
 ##
 When running this, a terminal will open.  
 Enter the filepath to your brainfuck file (file extension doesn't matter).  
