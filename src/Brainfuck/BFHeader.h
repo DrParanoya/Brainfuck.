@@ -1,7 +1,8 @@
 #pragma once
 
 void interpreter(std::string &bfcode, const bool random, const bool clear = false);
+
+void transpile_c_cpp(std::string &bfcode, std::string &path, const bool random, const bool cpp);
+
 bool loopsCorrect(std::string &bfcode);
-void aheadOfTime(std::string &bfcode, std::string &path, const bool random);
-void byteInterpreter(std::string &path, const bool clear = false);
-bool byteGenerator(std::string &bfcode, std::string &path, const bool random);
+void cleanup(std::string& bfcode);

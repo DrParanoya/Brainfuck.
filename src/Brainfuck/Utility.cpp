@@ -1,10 +1,12 @@
+#include <algorithm>
 #include <iostream>
+
 #include "BFHeader.h"
 
 bool loopsCorrect(std::string &bfcode) {
 	std::uint64_t open = 0;
 	std::uint64_t closed = 0;
-	for (std::uint32_t i = 0; i < bfcode.length(); i++) {
+	for (std::size_t i = 0; i < bfcode.length(); i++) {
 			if (bfcode[i] == '[') {
 				++open;
 			}
@@ -21,4 +23,9 @@ bool loopsCorrect(std::string &bfcode) {
 		return false;
 	}
 	return true;
+}
+
+void cleanup(std::string& bfcode) {
+	static constexpr std::string allowed("+-<>[],.?");
+	std::erase_if(bfcode, [](const auto c) { return !allowed.contains(c); });
 }
